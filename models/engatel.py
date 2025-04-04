@@ -12,9 +12,34 @@ class EngatelTipoPapel(models.Model):
 
     name=fields.Char("Nombre")
 
+class EngatelMaquina(models.Model):
+    _name = 'engatel.maquina'
+
+    name=fields.Char("Nombre")
+
 class EngatelParteProduccionCortadoras(models.Model):
     _name = 'engatel.parte_produccion_cortadoras'
 
+    def _get_turnos(self):
+        return [
+            ('dia', 'Día'),
+            ('noche', 'Noche'),
+        ]
+
+    fecha_hora_inicio = fields.Datetime("Fecha y hora inicio")
+    fecha_hora_fin = fields.Datetime("Fecha y hora fin")
+    turno = fields.Selection(_get_turnos, string="Turno")
+    maquina_id = fields.Many2one("engatel.maquina","Maquina")
+    operador_id = fields.Many2one("res.partner","Operador")
+    linea_ids = fields.One2many("engatel.parte_produccion_cortadoras_lineas","ppc_id", string="Lineas")
+    digitado = fields.Char("Digitado por")
+    firma_operador = fields.Binary("Firma operador")
+    firma_supervisor = fields.Binary("Firma supervisor")
+
+class EngatelParteProduccionCortadorasLineas(models.Model):
+    _name = 'engatel.parte_produccion_cortadoras_lineas'
+
+    ppc_id = fields.Many2one("engatel.parte_produccion_cortadoras","Parte produccion cortadoras")
     orden_trabajo_id = fields.Many2one("mrp.production", "No. OT")
     sub_orten_trabajo = fields.Char("No. SUB OT")
     ancho_materia_prima = fields.Float("ANCHO MAT. PRIMA")
@@ -26,4 +51,4 @@ class EngatelParteProduccionCortadoras(models.Model):
     tipo_papel = fields.Many2one("engatel.tipo_papel","Tipo papel")
     gramaje = fields.Char("Gramaje")
     rollos_caja = fields.Float("Rollos por caja")
-    firma_pallet = fields.Signature(string='Firma por pallet'))
+    firma_pallet = fields.Binary(string='Firma por pallet')

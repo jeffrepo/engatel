@@ -1,37 +1,77 @@
 <odoo>
     <data>
-
-
-        <record id="engatel_parte_produccion_cortadoras.form_view" model="ir.ui.view">
-            <field name="name">engatel.parte_produccion_cortadoras</field>
+    
+        <record id="engatel_parte_produccion_cortadoras_form_view" model="ir.ui.view">
+            <field name="name">engatel.parte_produccion_cortadoras.form</field>
             <field name="model">engatel.parte_produccion_cortadoras</field>
-            <field name="priority">100</field>
             <field name="arch" type="xml">
-                <form string="Bill of Material">
+                <form string="Parte produccion cortadoras">
                     <sheet>
-                        <field name="orden_trabajo_id"/>
+                        <group>
+                            <group>
+                                <field name="fecha_hora_inicio"/>
+                                <field name="fecha_hora_fin"/>
+                                <field name="turno"/>
+                                <field name="maquina_id"/>
+                                <field name="operador_id"/>
+                            </group>
+                        </group>
+                        <group string="Detalle">
+                            <field name="linea_ids" create="1">
+                                <list editable="bottom">
+                                    <field name="orden_trabajo_id"/>
+                                    <field name="sub_orten_trabajo"/>
+                                    <field name="ancho_materia_prima"/>
+                                    <field name="estado_id"/>
+                                    <field name="hora"/>
+                                    <field name="cantidad_producida"/>
+                                    <field name="vbo_supervisor_mecanico"/>
+                                    <field name="kilos_bobina_picada"/>
+                                    <field name="tipo_papel"/>
+                                    <field name="gramaje"/>
+                                    <field name="rollos_caja"/>
+                                    <field name="firma_pallet" widget="signature"/>
+                                </list>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="digitado"/>
+                            <field name="firma_operador" widget="signature"/>
+                            <field name="firma_supervisor" widget="signature"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
+        </record>
 
         <record id="engatel_parte_produccion_tree_view" model="ir.ui.view">
-            <field name="name">engatel.parte_produccion_cortadoras</field>
+            <field name="name">engatel.parte_produccion_cortadoras.tree</field>
             <field name="model">engatel.parte_produccion_cortadoras</field>
             <field name="arch" type="xml">
-                <list string="Parte de produccion cortadore" sample="1" multi_edit="1">
-                    <field name="orden_trabajo_id" column_invisible="show"/>
+                <list string="Parte de produccion cortadore">
+                    <field name="orden_trabajo_id"/>
+                    <field name="sub_orten_trabajo"/>
+                    <field name="ancho_materia_prima"/>
+                    <field name="estado_id"/>
+                    <field name="hora"/>
+                    <field name="cantidad_producida"/>
+                    <field name="vbo_supervisor_mecanico"/>
+                    <field name="kilos_bobina_picada"/>
+                    <field name="tipo_papel"/>
+                    <field name="gramaje"/>
+                    <field name="rollos_caja"/>
                 </list>
             </field>
         </record>
 
         <record id="view_engatel_produccion_cortadora_filter" model="ir.ui.view">
-            <field name="name">engatel.produccion.coratadora</field>
+            <field name="name">engatel.produccion.coratadora.select</field>
             <field name="model">engatel.parte_produccion_cortadoras</field>
             <field name="arch" type="xml">
                 <search string="Search parte produccion cortadora">
                     <field name="orden_trabajo_id" string="Orden de trabajo"/>
                     <group expand="0" string="Group By...">
-                        <filter string="orden_trabajo_id" name="Oorden de trabajo" domain="[]"/>
+                        <filter string="orden_trabajo_id" name="Oorden de trabajo"/>
                     </group>
                </search>
             </field>
@@ -39,10 +79,10 @@
 
         <record id="engatel_produccion_cortadoras" model="ir.actions.act_window">
             <field name="name">PARTE DE PRODUCCION CORTADORAS </field>
-            <field name="path">manufacturing</field>
+            <!-- <field name="path">manufacturing</field> -->
             <field name="res_model">engatel.parte_produccion_cortadoras</field>
-            <field name="view_mode">list, form</field>
-            <field name="view_id" eval="False"/>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" eval=""/>
             <field name="search_view_id" ref="view_engatel_produccion_cortadora_filter"/>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
