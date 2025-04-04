@@ -17,7 +17,7 @@
     'depends': ['mrp'],
 
     'data': [
-        #'views/sale_views.xml',
+        'sale/sale_engatel_views.xml',
     ],
     'license': 'LGPL-3',
 }

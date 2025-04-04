@@ -1,6 +1,29 @@
 <odoo>
     <data>
 
+
+        <record id="engatel_parte_produccion_cortadoras.form_view" model="ir.ui.view">
+            <field name="name">engatel.parte_produccion_cortadoras</field>
+            <field name="model">engatel.parte_produccion_cortadoras</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Bill of Material">
+                    <sheet>
+                        <field name="orden_trabajo_id"/>
+                    </sheet>
+                </form>
+            </field>
+
+        <record id="engatel_parte_produccion_tree_view" model="ir.ui.view">
+            <field name="name">engatel.parte_produccion_cortadoras</field>
+            <field name="model">engatel.parte_produccion_cortadoras</field>
+            <field name="arch" type="xml">
+                <list string="Parte de produccion cortadore" sample="1" multi_edit="1">
+                    <field name="orden_trabajo_id" column_invisible="show"/>
+                </list>
+            </field>
+        </record>
+
         <record id="view_engatel_produccion_cortadora_filter" model="ir.ui.view">
             <field name="name">engatel.produccion.coratadora</field>
             <field name="model">engatel.parte_produccion_cortadoras</field>
@@ -14,12 +37,11 @@
             </field>
         </record>
 
-
         <record id="engatel_produccion_cortadoras" model="ir.actions.act_window">
             <field name="name">PARTE DE PRODUCCION CORTADORAS </field>
             <field name="path">manufacturing</field>
             <field name="res_model">engatel.parte_produccion_cortadoras</field>
-            <field name="view_mode">list</field>
+            <field name="view_mode">list, form</field>
             <field name="view_id" eval="False"/>
             <field name="search_view_id" ref="view_engatel_produccion_cortadora_filter"/>
             <field name="help" type="html">
