@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+        <record id="view_engatel_produccion_cortadora_filter" model="ir.ui.view">
+            <field name="name">engatel.produccion.coratadora</field>
+            <field name="model">engatel.parte_produccion_cortadoras</field>
+            <field name="arch" type="xml">
+                <search string="Search parte produccion cortadora">
+                    <field name="orden_trabajo_id" string="Orden de trabajo"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="orden_trabajo_id" name="Oorden de trabajo" domain="[]"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+
+        <record id="engatel_produccion_cortadoras" model="ir.actions.act_window">
+            <field name="name">PARTE DE PRODUCCION CORTADORAS </field>
+            <field name="path">manufacturing</field>
+            <field name="res_model">engatel.parte_produccion_cortadoras</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="view_engatel_produccion_cortadora_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+              
+                No manufacturing order found. Let's create one.
+              </p><p>
+                Use Manufacturing Orders (MO) to build finished products while consuming components: i.e. 1 Table = 4 Table Legs + 1 Table Top
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_engatel_produccion_cortadoras"
+            name="Parte producción cortadoras"
+            parent="mrp.menu_mrp_manufacturing"
+            action="engatel_produccion_cortadoras"
+            sequence="100"/>
+
+    </data>
+</odoo>
