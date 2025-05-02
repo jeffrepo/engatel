@@ -2,6 +2,12 @@
 
 from odoo import api, fields, models, _
 
+class EngatelMaquina(models.Model):
+    _name = 'engatel.maquina'
+
+    name=fields.Char("Nombre")
+    velocidad= fields.Float("Velocidad")
+
 class EngatelEstado(models.Model):
     _name = 'engatel.estado'
 

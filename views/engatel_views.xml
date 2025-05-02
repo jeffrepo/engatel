@@ -1,6 +1,5 @@
 <odoo>
     <data>
-    
         <record id="engatel_parte_produccion_cortadoras_form_view" model="ir.ui.view">
             <field name="name">engatel.parte_produccion_cortadoras.form</field>
             <field name="model">engatel.parte_produccion_cortadoras</field>
@@ -49,17 +48,11 @@
             <field name="model">engatel.parte_produccion_cortadoras</field>
             <field name="arch" type="xml">
                 <list string="Parte de produccion cortadore">
-                    <field name="orden_trabajo_id"/>
-                    <field name="sub_orten_trabajo"/>
-                    <field name="ancho_materia_prima"/>
-                    <field name="estado_id"/>
-                    <field name="hora"/>
-                    <field name="cantidad_producida"/>
-                    <field name="vbo_supervisor_mecanico"/>
-                    <field name="kilos_bobina_picada"/>
-                    <field name="tipo_papel"/>
-                    <field name="gramaje"/>
-                    <field name="rollos_caja"/>
+                    <field name="fecha_hora_inicio"/>
+                    <field name="fecha_hora_fin"/>
+                    <field name="turno"/>
+                    <field name="maquina_id"/>
+                    <field name="operador_id"/>
                 </list>
             </field>
         </record>
@@ -69,9 +62,9 @@
             <field name="model">engatel.parte_produccion_cortadoras</field>
             <field name="arch" type="xml">
                 <search string="Search parte produccion cortadora">
-                    <field name="orden_trabajo_id" string="Orden de trabajo"/>
+                    <field name="fecha_hora_inicio" string="Orden de trabajo"/>
                     <group expand="0" string="Group By...">
-                        <filter string="orden_trabajo_id" name="Oorden de trabajo"/>
+                        <filter string="fecha_hora_inicio" name="fecha_hora_inicio"/>
                     </group>
                </search>
             </field>
