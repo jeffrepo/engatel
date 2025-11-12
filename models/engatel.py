@@ -41,6 +41,7 @@ class EngatelParteProduccionCortadoras(models.Model):
     digitado = fields.Char("Digitado por")
     firma_operador = fields.Binary("Firma operador")
     firma_supervisor = fields.Binary("Firma supervisor")
+    mrp_orden_id = fields.Many2one('mrp.production',string='Orden')
 
 class EngatelParteProduccionCortadorasLineas(models.Model):
     _name = 'engatel.parte_produccion_cortadoras_lineas'
