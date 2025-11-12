@@ -13,6 +13,7 @@
                                 <field name="turno"/>
                                 <field name="maquina_id"/>
                                 <field name="operador_id"/>
+                                <field name="mrp_orden_id"/>
                             </group>
                         </group>
                         <group string="Detalle">
